@@ -8,6 +8,7 @@
         messagingSenderId: "1077696176072"
     };
     firebase.initializeApp(config);
+    console.log(firebase.name);
 
     const txtEmail = document.getElementById('txtEmail');
     const txtPassword = document.getElementById('txtPassword');
@@ -25,8 +26,39 @@
         //Sign in call
         const promise = auth.signInWithEmailAndPassword(email, pass);
         promise.catch(e => console.log(e.message));
+        /*
+        auth.currentUser.getIdToken().then(function (data) {
+            console.log(data);
+        });
+        */
     });
 
+    btnSignUp.addEventListener('click', e => {
+        //Collect email and password
+        const email = txtEmail.value;
+        const pass = txtPassword.value;
+
+        if (email.length < 4) {
+            alert('Please enter an email address.')
+            return;
+        }
+        if (pass.length < 6) {
+            alert('Password has at least 6 characters');
+            return;
+        }
+
+        firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function (error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+
+            if (errorCode == 'auth/weak-password') {
+                alear('The Password is too weak.');
+            } else {
+                alear(errorMessage);
+            }
+            console.log(error);
+        })
+    })
     btnLogOut.addEventListener('click', e => {
         firebase.auth().signOut();
     });
@@ -36,6 +68,9 @@
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
             console.log(firebaseUser);
+            firebaseUser.getIdToken().then(function (data) {
+                console.log("User Token >>>>>>>> " + data + "<<<<<<<<<<");
+            });
             btnLogOut.classList.remove('hide');
             txtEmail.classList.add('hide');
             txtPassword.classList.add('hide');
