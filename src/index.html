@@ -16,15 +16,21 @@
             <div class="container">
                 <div class="wrapper">
                     <div class="form-signin">
-                        <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
+                       <!-- <h3 class="form-signin-heading">Welcome to BEC!<br /> Please Sign In</h3-->
+                        <h3 class="form-signin-heading">Welcome to BEC!</h3>
                         <hr class="colorgraph"><br>
-                        <h2 id="message" class="form-signin-heading hide">You abc yxz firebase</h2>
+                        <h2 id="message" class="form-signin-heading hide">Logged In via Firebase</h2>
+                       
                         <input  id="txtEmail" type="email" placeholder="Email" class="form-control" name="Username"/>
                         <input id="txtPassword" type="password" placeholder="Password" class="form-control" name="Password"/>
                         <button class="btn btn-lg btn-primary btn-block" id="btnLogin">Login</button>
                         <button class="btn btn-lg btn-primary btn-block" id="btnSignUp">Sign Up</button>
                         <button class="btn btn-lg btn-primary btn-block hide" id="btnLogOut">Log out</button>                   
                     </div>
+                   <div class="row">
+                       <h2 id="token-greeting" class="hide text-success">User token is: </h2><br />
+                       <textarea id="_token" class="hide text-info form-control" rows="10"></textarea>
+                   </div>
                 </div>
             </div>
         </div>

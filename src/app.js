@@ -16,6 +16,9 @@
     const btnSignUp = document.getElementById('btnSignUp');
     const btnLogOut = document.getElementById('btnLogOut');
     const txtmessage = document.getElementById('message');
+    const txtTokenGreeting = document.getElementById('token-greeting');
+    const txtUserToken = document.getElementById('_token');
+
     //Login event
     btnLogin.addEventListener('click', e => {
         //Retrieve email and password
@@ -70,17 +73,28 @@
             console.log(firebaseUser);
             firebaseUser.getIdToken().then(function (data) {
                 console.log("User Token >>>>>>>> " + data + "<<<<<<<<<<");
+                txtUserToken.value = data;
             });
             btnLogOut.classList.remove('hide');
             txtEmail.classList.add('hide');
             txtPassword.classList.add('hide');
+            btnSignUp.classList.add('hide');
+            btnLogin.classList.add('hide');
             txtmessage.classList.remove('hide');
+            //token
+            txtTokenGreeting.classList.remove('hide');
+            txtUserToken.classList.remove('hide');
         } else {
             console.log('not logged in');
             btnLogOut.classList.add('hide');
             txtEmail.classList.remove('hide');
             txtPassword.classList.remove('hide');
+            btnSignUp.classList.remove('hide');
+            btnLogin.classList.remove('hide');
             txtmessage.classList.add('hide');
+            //token
+            txtTokenGreeting.classList.add('hide');
+            txtUserToken.classList.add('hide');
         }
     })
 }());

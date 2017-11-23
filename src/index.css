@@ -13,7 +13,8 @@
 
 .form-signin-heading {
     text-align: center;
-    margin-bottom: 30px;
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 
 .form-control {
